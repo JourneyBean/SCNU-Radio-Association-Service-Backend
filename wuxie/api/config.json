@@ -1,0 +1,61 @@
+{
+    "注释": "无协后台配置文件,配置通道打开/关闭状态（opened，closed）",
+    "ver": "v2.00",
+
+    "database": {
+        "host": "scnuradio-association.cn",
+        "user": "wuxie",
+        "password": "wuxie2",
+        "schema": "wuxie"
+    },
+
+    "apikey": {
+        "manage_key": "5asef",
+        "api_token": "diehhf7364jf"
+    },
+
+    "compositon": [
+        {
+            "id": 1,
+            "name": "无协焊接大赛",
+            "switch": "closed",
+            "table_name": "m1"
+        },
+        {
+            "id": 2,
+            "name": "无协电子设计大赛",
+            "switch": "closed",
+            "table_name": "m2"
+        },
+        {
+            "id": 3,
+            "name": "无协彩灯节",
+            "switch": "closed",
+            "table_name": "m3"
+        },
+        {
+            "id": 4,
+            "name": "无协电子设计大赛",
+            "switch": "closed",
+            "table_name": "m4"
+        },
+        {
+            "id": 5,
+            "name": "智能车选拔赛",
+            "switch": "closed",
+            "table_name": "m5"
+        }
+    ],
+
+    "recruit": {
+        "switch": "closed"
+    },
+
+    "fix": {
+        "switch": "closed"
+    },
+
+    "member": {
+        "switch": "closed"
+    }
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>无协作业提交系统</title>
+        <link rel="stylesheet" href="https://scnuradio-association.cn/WuXie_2/bootstrap-4.3.1-dist/css/bootstrap.css"/>
+        <style>
+            label{
+                position: relative;
+            }
+            #file{
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+            }
+            #btn{
+                margin-right: 5px;
+            }
+            #processBar{
+                display: inline-block;
+                width: 0;
+                height: 7px;
+                /*position: absolute;
+                left: 500px;*/
+                top: 14px;
+                background: #009393;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="container header">
+            <h1>无协作业提交系统(Beta v1.2)</h1>
+        </div>
+        <div class="container">
+            <p><b>说明：</b><br/>
+                提交作业时，请填写好相关信息。多个文件请打包压缩上传。<br/>
+                文件名不做要求，系统会根据所填信息自动重命名文件。</p>
+            <p><b>注意：提交文件不能大于64MB</b></p>
+            <br/>
+
+            <form id="form">
+                <label for="departmenttag">部门：</label>
+                <select id="departmenttag" name="departmenttag">
+                    <option value="">请选择一项...</option>
+                    <option name="秘书处" value="秘书处">秘书处</option>
+                    <option name="技术部" value="技术部">技术部</option>
+                    <option name="宣策部" value="宣策部">宣策部</option>
+                    <option name="维修部" value="维修部">维修部</option>
+                    <option name="培训部" value="培训部">培训部</option>
+                    <option name="外联部" value="外联部">外联部</option>
+                </select>
+                <br />
+            
+                <label for="nametag">姓名：</label>
+                <input type="text" name="nametag" id="nametag" value="" />
+                <br />
+            
+                <label for="commenttag">作业：</label>
+                <select id="commenttag" name="commenttag">
+                    <option value="">请选择一项...</option>
+                    <option name="算法作业1" value="算法作业1">算法作业1</option>
+                    <option name="算法作业2" value="算法作业2">算法作业2</option>
+                    <!--
+                            <option value="技术部">技术部</option>
+                            <option value="宣策部">宣策部</option>
+                            <option value="维修部">维修部</option>
+                            <option value="培训部">培训部</option>
+                            <option value="外联部">外联部</option>
+                            -->
+                </select>
+                <br />
+                
+                <label for="file">
+                    <input type="button" id="file-choose-btn" value="上传文件" />
+                    <span id="file-choose-text">请选择文件</span>
+                    <input type="file" name="file" id="file" />
+                </label>
+
+                <br />
+            
+                <input type="submit" name="submit" id="submit" value="提交" />
+
+                <span id="progress-bar"></span>
+                <span id="progress-text"></span>
+            </form>
+            
+        </div>
+    </body>
+    <script src="https://scnuradio-association.cn/WuXie_2/jquery-3.4.0/jquery-3.4.0.min.js"></script>
+    <script>
+        function upload()
+        {
+            var fd = new FormData(document.getElementById("form"));
+
+            $.ajax(
+                {
+                    url: "https://scnuradio-association.cn/WuXie_2/HomeworkSubmit/upload-desktop.phpupload.php",
+                    type: "POST",
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    async: true,
+
+                    xhr: function()
+                    {
+                        var myXhr = $.ajaxSettings.xhr();
+                        if(myXhr.upload)
+                        {
+                            myXhr.upload.addEventListener('progress',function(e)
+                            {
+                                var loaded = e.loaded;
+                                var total = e.total;
+                                var percent = Math.floor(100 * loaded / total);
+                                $("#progress-text").text(percent + '%');
+                                $("#progress-bar").css("width", percent+"pt");
+                            },false);
+                        }
+                        return myXhr;
+                    }
+
+                }
+            ).done(function(){
+                $("#progress-text").text('上传成功');
+                alert('上传成功！');
+            });
+        }
+
+        $(document).ready(
+            function()
+            {
+                $("#file").change(
+                    function()
+                    {
+                        var file = document.getElementById("file");
+                        var fileName = file.files[0].name;
+                        var fileSize = file.files[0].size;
+
+                        if(fileSize > 64000000)
+                        {
+                            alert("文件过大，请重新选择");
+                            $("#file-choose-text").text("请选择文件");
+                            document.getElementById('file').value = '';
+                            return false;
+                        }
+                        else
+                        {
+                            $("#file-choose-text").text(fileName + ' (' + parseInt(fileSize/1024) + 'KB)');
+                        }
+                    }
+                )
+
+                $("#submit").click(
+                    function()
+                    {
+                        if($("#file").val()=='')
+                        {
+                            alert('请先选择文件！');
+                        }
+                        else
+                        {
+                            upload();
+                        }
+                    }
+                )
+            }
+        )
+    </script>
+</html>

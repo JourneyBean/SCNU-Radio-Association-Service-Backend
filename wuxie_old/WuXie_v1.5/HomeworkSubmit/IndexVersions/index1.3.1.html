@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UFT-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet"
+        href="https://scnuradio-association.cn/WuXie_2/materialize/css/materialize.min.css" media="screen,projection" />
+    <title>无协作业提交系统</title>
+</head>
+
+<body>
+    <div class="background">
+        <!--Waiting for upgrade-->
+    </div>
+    <div class="container">
+
+
+
+        <div class="header">
+            <h1>无协作业提交系统</h1>
+        </div>
+
+
+
+        <div class="content explainer card-panel">
+            <span>
+                <h5>提示</h5>
+            </span>
+            <div class="divider"></div>
+            <span>
+                <p>
+                    <b>(1)</b>提交作业时，请填写好相关信息<br />
+                    <b>(2)</b>多个文件请打包压缩上传<br />
+                    <b>(3)</b>文件名不做要求，系统会根据所填信息自动重命名文件<br />
+                    <b>(4)</b>提交文件不能大于64MB
+                </p>
+
+            </span>
+        </div>
+
+
+
+        <div class="content uploader card-panel">
+            <h5>提交</h5>
+            <div class="divider"></div>
+
+            <div>
+                <p>&nbsp;</p>
+            </div>
+
+            <form id="form">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select id="department">
+                            <option value="" disabled selected>选择...</option>
+                            <option value="秘书处" name="秘书处">秘书处</option>
+                            <option value="技术部">技术部</option>
+                            <option value="宣策部">宣策部</option>
+                            <option value="维修部">维修部</option>
+                            <option value="培训部">培训部</option>
+                            <option value="外联部">外联部</option>
+                        </select>
+                        <label for="department">请选择部门：</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="name" type="text" class="validate">
+                        <label for="name">请输入姓名</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select id="homework">
+                            <option value="" disabled selected>选择...</option>
+                            <option value="算法作业1">算法作业1</option>
+                            <option value="算法作业2">算法作业2</option>
+                        </select>
+                        <label for="homework">请选择作业：</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="file" class="btn waves-effect waves-light" name="file" id="file"/>
+                        <label for="file">请选择文件：</label>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s6 offset-s2">
+                        <button class="btn waves-effect waves-light" type="button" name="action" id="btn-submit">提交
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+        <script src="https://scnuradio-association.cn/WuXie_2/jquery-3.4.0/jquery-3.4.0.min.js"></script>
+        <script type="text/javascript"
+            src="https://scnuradio-association.cn/WuXie_2/materialize/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('select').formSelect();
+            });
+
+            $(function () {
+                $("#btn-submit").click(function () {
+                    $("#btn-submit").text("正在上传...");
+                    // var formData = new FormData();
+                    var fd = new FormData(document.getElementById("form"));
+                    // formData.append("departmenttag", document.getElementById("department"));
+                    // formData.append("nametag", document.getElementById("name"));
+                    // formData.append("commenttag", document.getElementById("homework"));
+                    // formData.append("file", document.getElementById("file").files[0]);
+                    $.ajax({
+                        url: "https://scnuradio-association.cn/WuXie_2/HomeworkSubmit/upload-desktop.php",
+                        type: "POST",
+                        data: fd,
+                        //data: $('#form').serialize(),
+                        contentType: false,
+                        processData: false,
+                        success: function (data) {
+                            if (data.status == "true") {
+                                alert("上传成功！");
+                            }
+                            if (data.status == "error") {
+                                alert(data.msg);
+                            }
+                            $("#btn-submit").text("上传");
+                        },
+                        error: function () {
+                            alert("上传失败！");
+                            $("#btn-submit").text("重试");
+                        }
+                    });
+                });
+            });
+        </script>
+</body>
+
+</html>

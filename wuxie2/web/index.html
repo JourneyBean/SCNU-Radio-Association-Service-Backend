@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src="./jquery-3.4.1.min.js" ></script>
+        <link rel="icon" href="https://scnuradio-association.cn/wuxie2/web/src/wuxie_logo.png">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="./index.js"></script>
+        <title>无协报名</title>
+    </head>
+    <body>
+        <div class="container">
+            <br>
+            <h1>无协报名系统</h1>
+            <br>
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pills-signup-tab" data-toggle="pill" href="#pills-signup" role="tab"
+                        aria-controls="pills-signup" aria-selected="true">招新报名</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-match-tab" data-toggle="pill" href="#pills-match" role="tab"
+                        aria-controls="pills-match" aria-selected="false">比赛报名</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-member-tab" data-toggle="pill" href="#pills-member" role="tab"
+                        aria-controls="pills-member" aria-selected="false">会员报名</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-fix-tab" data-toggle="pill" href="#pills-fix" role="tab"
+                        aria-controls="pills-fix" aria-selected="false">维修报名</a>
+                </li>
+            </ul>
+            <div class="tab-content " id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-signup" role="tabpanel" aria-labelledby="pills-signup-tab">
+                    <br>
+                    <h2>招新报名</h2>
+                    <br>
+                    <form id="signup-form">
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="name">姓名</label>
+                                <input type="text" name="name" class="form-control" id="name" placeholder="姓名">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="gender">性别</label>
+                                <input type="text" name="gender" class="form-control" id="gender" placeholder="性别">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="phone">电话</label>
+                                <input type="text" name="phone" class="form-control" id="phone" placeholder="电话">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="qq">QQ</label>
+                                <input type="text" name="qq" class="form-control" id="qq" placeholder="QQ">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="college">学院</label>
+                                <input type="text" name="college" class="form-control" id="college" placeholder="学院">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="class">班级</label>
+                                <input type="text" name="class" class="form-control" id="class" placeholder="班级">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="dorm_building">宿舍楼</label>
+                                <input type="text" name="dorm_building" class="form-control" id="dorm_building" placeholder="学院">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="dorm_room">宿舍号</label>
+                                <input type="text" name="dorm_room" class="form-control" id="dorm_room" placeholder="班级">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="first_choice">第一志愿</label>
+                                <select id="first_choice" name="first_choice" class="form-control">
+                                    <option selected value="秘书处">秘书处</option>
+                                    <option value="技术部">技术部</option>
+                                    <option value="宣策部">宣策部</option>
+                                    <option value="维修部">维修部</option>
+                                    <option value="培训部">培训部</option>
+                                    <option value="外联部">外联部</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="second_choice">第二志愿</label>
+                                <select id="second_choice" name="second_choice" class="form-control">
+                                        <option selected value="秘书处">秘书处</option>
+                                        <option value="技术部">技术部</option>
+                                        <option value="宣策部">宣策部</option>
+                                        <option value="维修部">维修部</option>
+                                        <option value="培训部">培训部</option>
+                                        <option value="外联部">外联部</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="obey">是否服从调剂</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="obey" id="obey_true" value="是" checked>
+                                <label class="form-check-label" for="obey_true">
+                                    是
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="obey" id="obey_false" value="否">
+                                <label class="form-check-label" for="obey_false">
+                                    否
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="introduction">自我介绍</label>
+                            <textarea class="form-control" name="introduction" id="introduction" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="hobby">个人兴趣爱好和特长</label>
+                            <textarea class="form-control" name="hobby" id="hobby" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="other">对协会的认识、期望以及发展建议</label>
+                            <textarea class="form-control" name="other" id="other" rows="5"></textarea>
+                        </div>
+                        <button type="button" id="signup-form-btn" class="btn btn-primary">我要报名！</button>
+                    </form>
+                    <br>
+                </div>
+                <div class="tab-pane fade" id="pills-match" role="tabpanel" aria-labelledby="pills-match-tab">
+                    <br>
+                    <h2>比赛报名</h2>
+                    <br>
+                    <form id="match-form">
+
+                        <h3>队伍信息</h3>
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="team_name">队伍名称</label>
+                                <input type="text" class="form-control" name="team_name" id="team_name" placeholder="队伍名称">
+                            </div>
+                        </div>
+
+                        <h3>队长信息</h3>
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="first_name">队长姓名</label>
+                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="队长姓名">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="first_id">队长学号</label>
+                                <input type="text" class="form-control" name="first_id" id="first_id" placeholder="队长学号">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="first_college">队长学院</label>
+                                <input type="text" class="form-control" name="first_college" id="first_college" placeholder="队长学院">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="first_class">队长班级</label>
+                                <input type="text" class="form-control" name="first_class" id="first_class" placeholder="队长班级">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="first_dorm_building">队长宿舍楼</label>
+                                <input type="text" class="form-control" name="first_dorm_building" id="first_dorm_building" placeholder="队长宿舍楼">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="first_dorm_room">队长宿舍房间</label>
+                                <input type="text" class="form-control" name="first_dorm_room" id="first_dorm_room" placeholder="队长宿舍房间">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="first_phone">队长电话</label>
+                                <input type="text" class="form-control" name="first_phone" id="first_phone" placeholder="队长电话">
+                            </div>
+                        </div>
+                        
+                        <h3>队员1信息</h3>
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="second_name">队员1姓名</label>
+                                <input type="text" class="form-control" name="second_name" id="second_name" placeholder="队员1姓名">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="second_id">队员1学号</label>
+                                <input type="text" class="form-control" name="second_id" id="second_id" placeholder="队员1学号">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="second_college">队员1学院</label>
+                                <input type="text" class="form-control" name="second_college" id="second_college" placeholder="队员1学院">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="second_class">队员1班级</label>
+                                <input type="text" class="form-control" name="second_class" id="second_class" placeholder="队员1班级">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="second_phone">队员1电话</label>
+                                <input type="text" class="form-control" name="second_phone" id="second_phone" placeholder="队员1电话">
+                            </div>
+                        </div>
+
+                        <h3>队员2信息</h3>
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="third_name">队员2姓名</label>
+                                <input type="text" class="form-control" name="third_name" id="third_name" placeholder="队员2姓名">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="third_id">队员2学号</label>
+                                <input type="text" class="form-control" name="third_id" id="third_id" placeholder="队员2学号">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="third_college">队员2学院</label>
+                                <input type="text" class="form-control" name="third_college" id="third_college" placeholder="队员2学院">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="third_class">队员2班级</label>
+                                <input type="text" class="form-control" name="third_class" id="third_class" placeholder="队员2班级">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="third_phone">队员2电话</label>
+                                <input type="text" class="form-control" name="third_phone" id="third_phone" placeholder="队员2电话">
+                            </div>
+                        </div>
+                        
+                        <button type="button" id="match-form-btn" class="btn btn-primary">我要报名！</button>
+                    </form>
+                    <br>
+                </div>
+                <div class="tab-pane fade" id="pills-member" role="tabpanel" aria-labelledby="pills-member-tab">
+                    <br>
+                    <h2>会员报名</h2>
+                    <br>
+                    <form id="member-form">
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="name">姓名</label>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="姓名">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="gender">性别</label>
+                                <input type="text" class="form-control" name="gender" id="gender" placeholder="性别">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="phone">电话</label>
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="电话">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="college">学院</label>
+                                <input type="text" class="form-control" name="college" id="college" placeholder="学院">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="class">班级</label>
+                                <input type="text" class="form-control" name="class" id="class" placeholder="班级">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="dorm_building">宿舍楼</label>
+                                <input type="text" class="form-control" name="dorm_building" id="dorm_building" placeholder="宿舍楼">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="dorm_room">宿舍房间</label>
+                                <input type="text" class="form-control" name="dorm_room" id="dorm_room" placeholder="宿舍房间">
+                            </div>
+                        </div>
+                        <button type="button" id="member-form-btn" class="btn btn-primary">我要报名！</button>
+                    </form>
+                    <br>
+                </div>
+                <div class="tab-pane fade" id="pills-fix" role="tabpanel" aria-labelledby="pills-fix-tab">
+                    <br>
+                    <h2>维修报名</h2>
+                    <br>
+                    <form id="fix-form">
+                        <div class="form-row">
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="item">物品名称</label>
+                                <input type="text" class="form-control" name="item" id="item" placeholder="物品名称">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="name">报修人姓名</label>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="报修人姓名">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="phone">电话</label>
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="电话">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="grade">年级</label>
+                                <input type="text" class="form-control" name="grade" id="grade" placeholder="年级">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="college">学院</label>
+                                <input type="text" class="form-control" name="college" id="college" placeholder="学院">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="dorm_building">宿舍楼</label>
+                                <input type="text" class="form-control" name="dorm_building" id="dorm_building" placeholder="宿舍楼">
+                            </div>
+                            <div class="form-group col-lg-6 col-sm-12 col-md-12" style="float: left">
+                                <label for="dorm_room">宿舍房间</label>
+                                <input type="text" class="form-control" name="dorm_room" id="dorm_room" placeholder="宿舍房间">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">故障描述</label>
+                            <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">备注</label>
+                            <textarea class="form-control" name="notes" id="notes" rows="5"></textarea>
+                        </div>
+                        <button type="button" id="fix-form-btn" class="btn btn-primary">我要报名！</button>
+                    </form>
+                    <br>
+                </div>
+            </div>
+            <div class="footer">
+                <p>(C)2019 华师无协 版权所有 &nbsp;&nbsp;&nbsp;
+                    <a href="./manage/">管理</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="https://scnuradio-association.cn/wuxiemanage/">数据发布</a>
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

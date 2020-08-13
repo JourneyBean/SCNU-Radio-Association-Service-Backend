@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="//scnuradio-association.cn/wuxie2/static/bootstrap_4_3_1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://scnuradio-association.cn/wuxie2/static/fontawesome_3_2_1/css/font-awesome.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" content="#2f9ed6" />
+        <link rel="icon" href="https://scnuradio-association.cn/wuxie2/web/src/wuxie_logo.png">
+        <script src="https://scnuradio-association.cn/wuxie2/web/manage/js/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="//scnuradio-association.cn/wuxie2/static/bootstrap_4_3_1/js/bootstrap.min.js"></script>
+        <script src="https://scnuradio-association.cn/wuxie2/web/manage/js/jquery.cookie.js"></script>
+        <script src="https://scnuradio-association.cn/wuxie2/web/manage/js/summary.js"></script>
+
+        <title>无协后台管理系统</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #2f9ed6;">
+            <a class="navbar-brand" href="#">
+                <img src="https://scnuradio-association.cn/wuxie2/web/src/wuxie_logo.png" width="30" height="30" class="d-inline-block align-top"
+                    alt="">
+                后台管理
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="https://scnuradio-association.cn/wuxie2/web/manage/?page=index">主页</a>
+                    <!-- <a class="nav-item nav-link" href="https://scnuradio-association.cn/wuxie2/web/">返回表单</a> -->
+                    <a class="nav-item nav-link active" href="https://scnuradio-association.cn/wuxie2/web/manage/?page=summary">数据汇总 <span
+                            class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="https://scnuradio-association.cn/wuxie2/web/manage/?page=recruit">招新系统</a>
+                    <a class="nav-item nav-link" href="https://scnuradio-association.cn/wuxie2/web/manage/?page=homework">作业系统</a>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <br>
+            <h1>数据查询汇总</h1>
+            <br>
+                <label class="my-1 mr-2" for="table-select">数据来源</label>
+                <select class="custom-select my-1 mr-sm-2" id="table-select">
+                    <option value="signup" selected>招新报名</option>
+                    <option value="match">比赛报名</option>
+                    <option value="fix">义修报备</option>
+                    <option value="member">会员报名</option>
+                </select>
+                <label for="query-text">查询字符串</label>
+                <input type="text" class="form-control mb-2 mr-sm-2" id="query-text" placeholder="空">
+            <ul class="nav nav-list"><li class="divider"></li></ul>
+            <table class="table table-responsive" id="result-table">
+                <thead id="result-table-head">
+
+                </thead>
+                <tbody id="result-table-body">
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal fade" id="delete-confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">确认删除</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modal-message"> 
+                        确认删除数据？
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modal-cancel">取消</button>
+                        <button type="button" class="btn btn-primary" id="modal-confirm">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

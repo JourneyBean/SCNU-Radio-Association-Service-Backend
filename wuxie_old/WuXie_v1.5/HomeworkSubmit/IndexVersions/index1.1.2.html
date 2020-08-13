@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>无协作业提交系统</title>
+        <link rel="stylesheet" href="https://scnuradio-association.cn/WuXie_2/bootstrap-4.3.1-dist/css/bootstrap.css"/>
+    </head>
+    <body>
+        <div class="container header">
+            <h1>无协作业提交系统(Beta v1.1.2)</h1>
+        </div>
+        <div class="container">
+            <p><b>说明：</b><br/>
+                提交作业时，请填写好相关信息。多个文件请打包压缩上传。<br/>
+                文件名不做要求，系统会根据所填信息自动重命名文件。</p>
+            <p><b>注意：提交文件不能大于64MB</b></p>
+            <br/>
+
+            <form id="form">
+                <label for="departmenttag">部门：</label>
+                <select id="departmenttag" name="departmenttag">
+                    <option value="">请选择一项...</option>
+                    <option name="秘书处" value="秘书处">秘书处</option>
+                    <option name="技术部" value="技术部">技术部</option>
+                    <option name="宣策部" value="宣策部">宣策部</option>
+                    <option name="维修部" value="维修部">维修部</option>
+                    <option name="培训部" value="培训部">培训部</option>
+                    <option name="外联部" value="外联部">外联部</option>
+                </select>
+                <br />
+            
+                <label for="nametag">姓名：</label>
+                <input type="text" name="nametag" id="nametag" value="" />
+                <br />
+            
+                <label for="commenttag">作业：</label>
+                <select id="commenttag" name="commenttag">
+                    <option value="">请选择一项...</option>
+                    <option name="算法作业1" value="算法作业1">算法作业1</option>
+                    <option name="算法作业2" value="算法作业2">算法作业2</option>
+                    <!--
+                            <option value="技术部">技术部</option>
+                            <option value="宣策部">宣策部</option>
+                            <option value="维修部">维修部</option>
+                            <option value="培训部">培训部</option>
+                            <option value="外联部">外联部</option>
+                            -->
+                </select>
+                <br />
+            
+                <label for="file">选择文件：</label>
+                <input type="file" name="file" id="file" />
+                <br />
+            
+                <input type="submit" name="submit" value="提交" />
+            </form>
+            <p id="status"></p>
+            
+        </div>
+    </body>
+    <script src="https://scnuradio-association.cn/WuXie_2/jquery-3.4.0/jquery-3.4.0.min.js"></script>
+    <script>
+        $("form").submit(function (e) {
+
+                e.preventDefault();
+
+                document.getElementById('status').innerHTML = "正在上传...";
+
+                var fd = new FormData(document.getElementById("form"));
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open("POST", "https://scnuradio-association.cn/WuXie_2/HomeworkSubmit/upload-desktop.php", true);
+                xhr.send(fd);
+                xhr.onprogress = function(e) {
+                    //e = e||event;
+                    //if(e.lengthComputable) {
+                        percent = e.loaded / e.total * 100;
+                        document.getElementById('status').innerHTML = e.loaded;
+                    //}
+                }
+                xhr.onload = function (e) {
+                    if (this.status == 200) {
+                        document.getElementById('status').innerHTML = "完成";
+                        alert(this.responseText);
+                    };
+                };
+                return;
+            });
+
+    </script>
+</html>

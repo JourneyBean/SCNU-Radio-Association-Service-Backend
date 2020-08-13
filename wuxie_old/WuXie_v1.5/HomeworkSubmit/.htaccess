@@ -1,0 +1,9 @@
+php_value memory_limit 128M 
+php_value post_max_size 128M 
+php_value upload_max_filesize 120M 
+php_value max_execution_time 300 
+php_value max_input_tim 300 
+php_value display_errors On
+
+IndexOptions Charset=UTF-8
+IndexOptions FancyIndexing NameWidth=*
